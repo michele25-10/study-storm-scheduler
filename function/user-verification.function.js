@@ -4,7 +4,6 @@ const writeTerminal = require('../middleware/writeTerminal');
 
 const clearTableUserVerification = asyncHandler(async () => {
     const result = await UserVerification.deleteExpiredAndConfirmUserVerification();
-    console.log("esecuzione");
     writeTerminal({ message: "Pulizia tabella user_verification", affectedRows: result.affectedRows, nameFunction: "clearTableUserVerification" });
 });
 
