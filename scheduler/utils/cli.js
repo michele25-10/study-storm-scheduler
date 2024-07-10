@@ -23,6 +23,16 @@ const flags = {
 		type: `boolean`,
 		alias: `v`,
 		desc: `Print CLI version`
+	},
+	all: {
+		type: `boolean`,
+		alias: `l`,
+		desc: `Esegue per tutti i tipi di processi`
+	},
+	not: {
+		type: `string`,
+		alias: `n`,
+		desc: `eccetto elementi contenuti nell'array`
 	}
 };
 
