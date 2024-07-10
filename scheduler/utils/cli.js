@@ -27,11 +27,12 @@ const flags = {
 };
 
 const commands = {
-	help: { desc: `Print help info` }
+	help: { desc: `Print help info` },
+	list: { desc: `Lista di servizi` }
 };
 
 const helpText = meowHelp({
-	name: `list`,
+	name: `scheduler`,
 	flags,
 	commands
 });

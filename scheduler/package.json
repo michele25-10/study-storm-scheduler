@@ -1,9 +1,10 @@
 {
 	"name": "scheduler",
-	"description": "Restituisce la lista dei servizi attivi",
+	"description": "Scheduler di pooling e triggering sulle tabelle del database del progetto study-storm, inoltre invia mail di supporto e di aiuto basate su una serie di dati alla nostra comunity",
 	"version": "0.0.1",
 	"license": "UNLICENSED",
 	"bin": {
+		"Scheduler": "index.js",
 		"scheduler": "index.js"
 	},
 	"author": {
@@ -12,7 +13,7 @@
 		"url": "https://study-storm.it"
 	},
 	"keywords": [
-		"scheduler",
+		"Scheduler",
 		"Michele Gabrieli"
 	],
 	"files": [

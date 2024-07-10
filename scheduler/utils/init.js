@@ -5,8 +5,8 @@ const unhandled = require('cli-handle-unhandled');
 module.exports = ({ clear = true }) => {
 	unhandled();
 	welcome({
-		title: `scheduler`,
-		tagLine: `by Michele Gabrieli`,
+		title: `Scheduler`,
+		tagLine: `by Michele Gabrieli & Alberto Pavarin`,
 		description: pkg.description,
 		version: pkg.version,
 		bgColor: '#36BB09',

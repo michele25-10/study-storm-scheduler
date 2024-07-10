@@ -1,0 +1,16 @@
+{
+    "services": [
+        {
+            "id": 1,
+            "name": "clearTableUserVerification",
+            "description": "pulisce tabella user_verification da richieste già accettate o da accettare",
+            "status": "disactive"
+        },
+        {
+            "id": 2,
+            "name": "clearTableResetPassword",
+            "description": "pulisce tabella reset_password da richieste già accettate o da accettare",
+            "status": "disactive"
+        }
+    ]
+}
