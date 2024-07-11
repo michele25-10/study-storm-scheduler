@@ -2,22 +2,32 @@ const cron = require("node-cron");
 
 const { clearTableUserVerification } = require("../cron-function/user-verification.function");
 const { clearTableResetPassword } = require("../cron-function/reset-password.function");
-const { listService } = require("../enums/list-service");
 
-const Cron = {
-    clearTableUserVerificationCron: cron.schedule('* * * * * *', clearTableUserVerification, {
-        scheduled: false,
-        timezone: 'Europe/Rome',
-        name: listService[0].name,
-        recoverMissedExecutions: true,
-    }),
-    clearTableResetPasswordCron: cron.schedule('* * * * * *', clearTableResetPassword, {
-        scheduled: false,
-        timezone: 'Europe/Rome',
-        name: listService[1].name,
-        recoverMissedExecutions: true,
-    }),
-}
+let Cron = [
+    {
+        schedule: cron.schedule('* * * * * *', clearTableUserVerification, {
+            scheduled: false,
+            timezone: 'Europe/Rome',
+            name: "clear-user-verification",
+            recoverMissedExecutions: true,
+        }),
+        active: false,
+        id: 1,
+        name: "clear-user-verification"
+    },
+    {
+        schedule:
+            cron.schedule('* * * * * *', clearTableResetPassword, {
+                scheduled: false,
+                timezone: 'Europe/Rome',
+                name: "clear-reset-password",
+                recoverMissedExecutions: true,
+            }),
+        name: "clear-reset-password",
+        active: false,
+        id: 2,
+    }
+];
 
 
 
