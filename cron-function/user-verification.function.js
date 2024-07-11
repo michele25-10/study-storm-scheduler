@@ -7,5 +7,4 @@ const clearTableUserVerification = asyncHandler(async () => {
     console.log("result clearTableUserVerification: " + result);
 });
 
-
 module.exports = { clearTableUserVerification };

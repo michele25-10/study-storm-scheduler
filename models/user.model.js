@@ -15,6 +15,20 @@ const User = {
         const result = await connFunction.query(mysql, {});
         return result;
     },
+    inactiveUser: async () => {
+        const mysql = `
+        SELECT u.id, u.email, u.name, u.surname, a.latest_date
+        FROM \`user\` u
+        INNER JOIN (
+            SELECT uta.id_user, MAX(a.\`date\`) AS latest_date
+            FROM user_task_agenda uta
+            INNER JOIN agenda a ON a.id = uta.id_agenda
+            GROUP BY uta.id_user
+        ) a ON a.id_user = u.id
+        WHERE a.latest_date < DATE_SUB(NOW(), INTERVAL 14 DAY);`
+        const result = await connFunction.query(mysql, {});
+        return result;
+    },
 }
 
 module.exports = User;

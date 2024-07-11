@@ -3,7 +3,7 @@ const cron = require("node-cron");
 const { clearTableUserVerification } = require("../cron-function/user-verification.function");
 const { clearTableResetPassword } = require("../cron-function/reset-password.function");
 const { clearTableInviteTeam } = require("../cron-function/invite-team.function");
-const { disclaimarObsessionatedStudent } = require("../cron-function/user.function");
+const { disclaimarObsessionatedStudent, inactiveUser } = require("../cron-function/user.function");
 
 let Cron = [
     {
@@ -52,6 +52,18 @@ let Cron = [
         name: "obsessionated-student",
         active: false,
         id: 3,
+    },
+    {
+        schedule:
+            cron.schedule('*/5 * * * * *', inactiveUser, {
+                scheduled: false,
+                timezone: 'Europe/Rome',
+                name: "inactive-user",
+                recoverMissedExecutions: false,
+            }),
+        name: "inactive-user",
+        active: false,
+        id: 4,
     }
 ];
 
