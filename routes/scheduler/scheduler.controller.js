@@ -17,7 +17,7 @@ const start = asyncHandler(async (req, res) => {
         return;
     } else if (req.body.only) {
         //Attivo solamente le task con id o nome interno alla lista 
-        for (const row of only) {
+        for (const row of req.body.only) {
             Cron.forEach(item => {
                 //attivo quelle presenti nella lista solo se sono disattivate
                 if ((item.id == row || item.name == row) && !item.active) {
@@ -36,7 +36,6 @@ const start = asyncHandler(async (req, res) => {
             for (const item of req.body.not) {
                 if (item == row.name || item == row.id) {
                     skip = true;
-                    return;
                 }
             }
 
@@ -72,12 +71,12 @@ const stop = asyncHandler(async (req, res) => {
         return;
     } else if (req.body.only) {
         //disattivo solamente le task con id o nome interno alla lista 
-        for (const row of only) {
+        for (const row of req.body.only) {
             Cron.forEach(item => {
                 //disattivo quelle presenti nella lista solo se sono attive
                 if ((item.id == row || item.name == row) && item.active) {
-                    item.schedule.start();
-                    item.active = true;
+                    item.schedule.stop();
+                    item.active = false;
                 }
             });
         }
@@ -91,14 +90,13 @@ const stop = asyncHandler(async (req, res) => {
             for (const item of req.body.not) {
                 if (item == row.name || item == row.id) {
                     skip = true;
-                    return;
                 }
             }
 
             //se non è presente e il processo e attivo allora disattivo il processo
             if (!skip && row.active) {
-                row.schedule.start();
-                row.active = true;
+                row.schedule.stop();
+                row.active = false;
             }
             skip = false;
         }

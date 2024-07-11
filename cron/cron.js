@@ -5,11 +5,11 @@ const { clearTableResetPassword } = require("../cron-function/reset-password.fun
 
 let Cron = [
     {
-        schedule: cron.schedule('* * * * * *', clearTableUserVerification, {
+        schedule: cron.schedule('*/5 * * * * *', clearTableUserVerification, {
             scheduled: false,
             timezone: 'Europe/Rome',
             name: "clear-user-verification",
-            recoverMissedExecutions: true,
+            recoverMissedExecutions: false,
         }),
         active: false,
         id: 1,
@@ -17,11 +17,11 @@ let Cron = [
     },
     {
         schedule:
-            cron.schedule('* * * * * *', clearTableResetPassword, {
+            cron.schedule('*/5 * * * * *', clearTableResetPassword, {
                 scheduled: false,
                 timezone: 'Europe/Rome',
                 name: "clear-reset-password",
-                recoverMissedExecutions: true,
+                recoverMissedExecutions: false,
             }),
         name: "clear-reset-password",
         active: false,
