@@ -5,6 +5,7 @@ const handlebars = require('handlebars');
 const fs = require('fs');
 const path = require('path');
 const sendMailer = require('../utils/mail');
+const { writeTerminal } = require('../utils/writeTerminal');
 
 const disclaimarObsessionatedStudent = asyncHandler(async () => {
     const result = await User.obsessionatedStudent();
@@ -25,7 +26,11 @@ const disclaimarObsessionatedStudent = asyncHandler(async () => {
             html: template(replacements)
         });
     }
-    console.log("result disclaimarObsessionatedStudent: " + result);
+    writeTerminal({
+        error: false,
+        id: 3,
+        name: "obsessionated-student"
+    });
 });
 
 const inactiveUser = asyncHandler(async () => {
@@ -46,7 +51,11 @@ const inactiveUser = asyncHandler(async () => {
             html: template(replacements)
         });
     }
-    console.log("result inactiveUser: " + result);
+    writeTerminal({
+        error: false,
+        id: 4,
+        name: "inactive-user"
+    });
 });
 
 module.exports = { disclaimarObsessionatedStudent, inactiveUser };
