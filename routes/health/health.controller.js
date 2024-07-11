@@ -1,7 +1,7 @@
 const asyncHandler = require('express-async-handler');
 const si = require('systeminformation');
 
-//@desc Visualizzazione se funziona
+//@desc Informazioni hw del server per verificare un buon funzionamento e prendere decisioni su possibili miglioramenti lato HARDWARE
 //@route GET /api/health/
 //@access private
 const serverInfoHW = asyncHandler(async (req, res) => {

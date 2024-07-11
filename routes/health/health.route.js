@@ -5,5 +5,4 @@ const healthController = require('./health.controller');
 
 router.get("/", healthController.serverInfoHW);
 
-
 module.exports = router;
