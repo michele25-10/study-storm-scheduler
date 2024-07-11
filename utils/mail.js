@@ -23,7 +23,7 @@ const sendMailer = async ({ from, to, subject, text, html }) => {
         });
         return;
     } catch (error) {
-        console.error("Error: Errore nell'invio della mail");
+        throw new Error("Error: Errore nell'invio della mail");
     }
 }
 
