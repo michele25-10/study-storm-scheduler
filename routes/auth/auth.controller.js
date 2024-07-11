@@ -10,13 +10,13 @@ const login = asyncHandler(async (req, res) => {
 
     const hashedPassword = hash(password);
 
-    if (hashedPassword === process.env.PASSWORD && username === process.env.USERNAME) {
-        const accessToken = jwt.sign({
-        }, process.env.ACCESS_TOKEN_SECRET, { expiresIn: "1h" });
+    if (hashedPassword === process.env.LOGIN_PASSWORD && username === process.env.LOGIN_USERNAME) {
+        const accessToken = jwt.sign({}, process.env.ACCESS_TOKEN_SECRET, { expiresIn: "1h" });
 
         res.status(200).send({
             accessToken
         });
+        return;
     } else {
         res.status(404);
         throw new Error("username o password erratta");

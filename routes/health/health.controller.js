@@ -1,32 +1,38 @@
 const asyncHandler = require('express-async-handler');
-const sendMailer = require("../../utils/mail");
+const si = require('systeminformation');
 
 //@desc Visualizzazione se funziona
-//@route GET /api/user/
+//@route GET /api/health/
 //@access private
-const healthBackendCheck = asyncHandler(async (req, res) => {
-    res.status(200).send({
-        message: "Il server è in ascolto",
-        port: process.env.PORT || 5001
-    })
+const serverInfoHW = asyncHandler(async (req, res) => {
+    // Informazioni di base sul sistema
+    let response = {}
+    await si.system()
+        .then(data => response.system = data)
+        .catch(error => console.error(error));
+
+    // Informazioni sulla CPU
+    await si.cpu()
+        .then(data => response.cpu = data)
+        .catch(error => console.error(error));
+
+    // Informazioni sulla memoria
+    await si.mem()
+        .then(data => response.memoria = data)
+        .catch(error => console.error(error));
+
+    // Informazioni sulla temperatura della CPU
+    await si.cpuTemperature()
+        .then(data => response.cpu_temp = data)
+        .catch(error => console.error(error));
+
+    // Informazioni sul carico del sistema
+    await si.currentLoad()
+        .then(data => response.carico_attuale = data)
+        .catch(error => console.error(error));
+
+    res.status(200).send(response);
 });
 
-//@desc Visualizzazione se funziona email sender
-//@route POST /api/user/
-//@access private
-const sendEmail = asyncHandler(async (req, res) => {
-    await sendMailer({
-        from: process.env.email, // sender address
-        to: "michele.gabrieli.work@gmail.com", // list of receivers
-        subject: "TEST email sender", // Subject line
-        text: "Hello world?", // plain text body
-        html: "<button>Invia</button>", // html body
-    });
 
-    res.status(200).send({
-        message: "Mail inviata",
-        port: process.env.PORT || 5001
-    })
-});
-
-module.exports = { healthBackendCheck, sendEmail }
+module.exports = { serverInfoHW }
