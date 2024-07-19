@@ -1,4 +1,7 @@
-# Logs
+# script per eseguire un backup del database
+config/executeBackup.sh
+
+#logs
 logs
 *.log
 npm-debug.log*
