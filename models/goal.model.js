@@ -28,6 +28,21 @@ const Goal = {
         );
         return result;
     },
+    selectIdGoalOfTeam: async () => {
+        const mysql = `SELECT ug.id_goal FROM user_goal ug GROUP BY ug.id_goal HAVING COUNT(ug.id_goal) > 1;`;
+        const result = await connFunction.query(mysql, {});
+        return result;
+    },
+    selectAdminTeam: async ({ id_goal }) => {
+        const mysql = `
+            SELECT u.email, u.name, u.surname, g.name as goal_name
+            FROM user_goal ug 
+            inner join user u on ug.id_user like u.id 
+            inner join goal g on g.id = ug.id_goal 
+            where ug.admin = 1 AND ug.id_goal = 1;`;
+        const result = await connFunction.query(mysql, { id_goal });
+        return result[0];
+    }
 }
 
 module.exports = Goal;

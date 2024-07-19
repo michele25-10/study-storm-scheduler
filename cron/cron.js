@@ -4,7 +4,7 @@ const { clearTableUserVerification } = require("../cron-function/user-verificati
 const { clearTableResetPassword } = require("../cron-function/reset-password.function");
 const { clearTableInviteTeam } = require("../cron-function/invite-team.function");
 const { disclaimarObsessionatedStudent, inactiveUser } = require("../cron-function/user.function");
-const { expiredGoals } = require("../cron-function/goal.function");
+const { expiredGoals, teamComponentsAgenda } = require("../cron-function/goal.function");
 
 let Cron = [
     {
@@ -71,12 +71,24 @@ let Cron = [
             cron.schedule('*/5 * * * * *', expiredGoals, {
                 scheduled: false,
                 timezone: 'Europe/Rome',
-                name: "inactive-user",
+                name: "expired-goals",
                 recoverMissedExecutions: false,
             }),
         name: "expired-goals",
         active: false,
         id: 5,
+    },
+    {
+        schedule:
+            cron.schedule('*/5 * * * * *', teamComponentsAgenda, {
+                scheduled: false,
+                timezone: 'Europe/Rome',
+                name: "team-components-agenda",
+                recoverMissedExecutions: false,
+            }),
+        name: "team-components-agenda",
+        active: false,
+        id: 6,
     }
 ];
 
