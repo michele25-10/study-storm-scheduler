@@ -8,7 +8,7 @@ const { expiredGoals, teamComponentsAgenda } = require("../cron-function/goal.fu
 
 let Cron = [
     {
-        schedule: cron.schedule('*/5 * * * * *', clearTableUserVerification, {
+        schedule: cron.schedule('0 */6 * * *', clearTableUserVerification, {
             scheduled: false,
             timezone: 'Europe/Rome',
             name: "clear-user-verification",
@@ -20,7 +20,7 @@ let Cron = [
     },
     {
         schedule:
-            cron.schedule('*/5 * * * * *', clearTableResetPassword, {
+            cron.schedule('0 */6 * * *', clearTableResetPassword, {
                 scheduled: false,
                 timezone: 'Europe/Rome',
                 name: "clear-reset-password",
@@ -32,7 +32,7 @@ let Cron = [
     },
     {
         schedule:
-            cron.schedule('*/5 * * * * *', clearTableInviteTeam, {
+            cron.schedule('0 */6 * * *', clearTableInviteTeam, {
                 scheduled: false,
                 timezone: 'Europe/Rome',
                 name: "clear-reset-password",
@@ -44,7 +44,7 @@ let Cron = [
     },
     {
         schedule:
-            cron.schedule('*/5 * * * * *', disclaimarObsessionatedStudent, {
+            cron.schedule('0 20 * * *', disclaimarObsessionatedStudent, {
                 scheduled: false,
                 timezone: 'Europe/Rome',
                 name: "obsessionated-student",
@@ -56,7 +56,7 @@ let Cron = [
     },
     {
         schedule:
-            cron.schedule('*/5 * * * * *', inactiveUser, {
+            cron.schedule('0 20 * * *', inactiveUser, {
                 scheduled: false,
                 timezone: 'Europe/Rome',
                 name: "inactive-user",
@@ -68,7 +68,7 @@ let Cron = [
     },
     {
         schedule:
-            cron.schedule('*/5 * * * * *', expiredGoals, {
+            cron.schedule('0 8 * * *', expiredGoals, {
                 scheduled: false,
                 timezone: 'Europe/Rome',
                 name: "expired-goals",
@@ -80,7 +80,7 @@ let Cron = [
     },
     {
         schedule:
-            cron.schedule('*/5 * * * * *', teamComponentsAgenda, {
+            cron.schedule('0 20 * * *', teamComponentsAgenda, {
                 scheduled: false,
                 timezone: 'Europe/Rome',
                 name: "team-components-agenda",
