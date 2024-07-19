@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Scadenza esame/progetto/verifica</title>
+  </head>
+  <body>
+    <h1 class="title" style="color: violet; font-size: 32px; font-weight: bold">
+      La scadenza si avvicina, come sei messo con lo studio?
+    </h1>
+
+    <div
+      class="paragraph"
+      style="margin-top: 20px; margin-bottom: 20px; color: black"
+    >
+      <p>Buongiorno {{name}} {{surname}},</p>
+      <p>
+        Tra <b>{{daysToExpiry}} giorni</b>, come da te inserito nella nostra app
+        ci sarà l'esame/scadenza di <b>{{goalName}}.</b>
+      </p>
+      <p>La scadenza da te inserita è prevista per il <b>{{expiryDate}}</b>.</p>
+      <p>
+        Ti suggeriamo di continuare a studiare o di incrementare le ore di
+        studio per poter soddisfare il tuo obiettivo e migliorare di
+        conseguenza.
+      </p>
+      <p>Buona fortuna da parte del team di StudyStorm!</p>
+    </div>
+  </body>
+</html>
