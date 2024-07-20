@@ -27,19 +27,6 @@ const backupDatabase = () => {
             });
             return;
         }
-        if (stderr) {
-            writeTerminal({ error: true, id: 7, name: "backup-database" });
-            console.error(`Errore standard: ${stderr}`);
-            sendMailToDeveloper({
-                object: "Study Storm: Backup Database Error",
-                body: `Gentile sviluppatore,<br> 
-                Ci teniamo ad informarti che il backup del database di Study Storm NON è avvenuto con successo alle ore: ${moment().format("DD/MM/YYYY HH:mm:ss")}.<br>
-                Ti suggeriamo di controllare i log per capire l'entità dell'errore.<br>
-                Buon proseguimento di giornata.`,
-                html: null,
-            });
-            return;
-        }
 
         writeTerminal({ error: false, id: 7, name: "backup-database" });
         console.log(`Output: ${stdout}`);

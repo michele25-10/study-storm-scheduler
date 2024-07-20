@@ -94,7 +94,7 @@ let Cron = [
     {
         //ogni domeninca mattina alle ore 2:00 AM '0 2 * * 0'
         schedule:
-            cron.schedule('*/10 * * * * *', backupDatabase, {
+            cron.schedule('0 2 * * 0', backupDatabase, {
                 scheduled: false,
                 timezone: 'Europe/Rome',
                 name: "backup-database",

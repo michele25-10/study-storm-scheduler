@@ -1,6 +1,6 @@
 const sendMailer = require("./mail");
 
-const developersMail = ["michele.gabri01@gmail.com", /*"albertopavarin05@gmail.com"*/];
+const developersMail = ["michele.gabri01@gmail.com", "albertopavarin05@gmail.com"];
 
 const sendMailToDeveloper = async ({ body, object, html }) => {
     for (const developer of developersMail) {
