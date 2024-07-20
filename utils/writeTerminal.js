@@ -12,7 +12,7 @@ const writeTerminal = ({ error, id, name, datetime = moment().format("DD/MM/YYYY
         console.log(chalk.green(message))
     }
 
-    const logFilePath = path.join(__dirname, '../log.txt');
+    const logFilePath = path.join(__dirname, `../log/${moment().format("DD-MM-YYYY")}.txt`);
     fs.appendFile(logFilePath, message + "\n", (err) => {
         if (err) {
             return console.error(`Errore durante l'aggiunta al file: ${err.message}`);

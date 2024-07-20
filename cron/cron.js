@@ -5,6 +5,7 @@ const { clearTableResetPassword } = require("../cron-function/reset-password.fun
 const { clearTableInviteTeam } = require("../cron-function/invite-team.function");
 const { disclaimarObsessionatedStudent, inactiveUser } = require("../cron-function/user.function");
 const { expiredGoals, teamComponentsAgenda } = require("../cron-function/goal.function");
+const { backupDatabase } = require("../cron-function/backup-database");
 
 let Cron = [
     {
@@ -89,6 +90,19 @@ let Cron = [
         name: "team-components-agenda",
         active: false,
         id: 6,
+    },
+    {
+        //ogni domeninca mattina alle ore 2:00 AM '0 2 * * 0'
+        schedule:
+            cron.schedule('*/10 * * * * *', backupDatabase, {
+                scheduled: false,
+                timezone: 'Europe/Rome',
+                name: "backup-database",
+                recoverMissedExecutions: false,
+            }),
+        name: "backup-database",
+        active: false,
+        id: 7,
     }
 ];
 
